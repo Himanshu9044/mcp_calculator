@@ -22,14 +22,17 @@ def divide(a: float, b: float) -> float:
         raise ValueError("Cannot divide by zero.")
     return a / b
 
-@mcp.resource("Calculator", "1.0.0")
-def get_calculator_info():
-    """Returns information about the calculator plugin."""
-    return {
-        "name": "Calculator",
-        "version": "1.0.0",
-        "description": "A simple calculator plugin for FastMCP"
-    }
+@mcp.resource("calculator://info")
+def get_calculator_info() -> str:
+    """Returns information about the calculator."""
+    return """
+    Calculator MCP Server
+    Version: 1.0.0
+    Operations: add, subtract, multiply, divide
+    """
     
+
+
 if __name__ == "__main__":
+    print("Starting Calculator MCP Server...")
     mcp.run()
